@@ -8,8 +8,9 @@ SolarSystem::SolarSystem(QWidget *parent, IShapeFactory *shapeFactory) : QGLView
 
     _sun = new Sun(_shapeFactory, 34);
 
-    IOrbit *redPlanet = _sun->addChild(new FlatOrbit(_sun, 55, 1, _shapeFactory, 3, Qt::red));
-    redPlanet->addChild(new FlatOrbit(redPlanet, 5, 2, _shapeFactory, 1, Qt::darkBlue));
+    IOrbit *redPlanet = _sun->addChild(new FlatOrbit(_sun, 55, 1, _shapeFactory, 2.8, Qt::red));
+    IOrbit *nearSatellite = redPlanet->addChild(new FlatOrbit(redPlanet, 5, 1.5, _shapeFactory, 1, Qt::darkBlue));
+    nearSatellite->addChild(new FlatOrbit(nearSatellite, 2.2, 1, _shapeFactory, 0.5, Qt::white));
 
     IOrbit *greenPlanet = _sun->addChild(new FlatOrbit(_sun, 89, 3, _shapeFactory, 8, Qt::green));
     greenPlanet->addChild(new FlatOrbit(greenPlanet, 12, 1, _shapeFactory, 1.5, Qt::white));
@@ -18,7 +19,8 @@ SolarSystem::SolarSystem(QWidget *parent, IShapeFactory *shapeFactory) : QGLView
 
     IOrbit *darkPlanet = _sun->addChild(new FlatOrbit(_sun, 144, 0.5, _shapeFactory, 5, Qt::darkMagenta));
     darkPlanet->addChild(new FlatOrbit(darkPlanet, 8, 0.5, _shapeFactory, 1, Qt::darkBlue));
-    darkPlanet->addChild(new FlatOrbit(darkPlanet, 23, 0.2, _shapeFactory, 1.5, Qt::darkGray));
+    IOrbit *farSatellite = darkPlanet->addChild(new FlatOrbit(darkPlanet, 23, 0.2, _shapeFactory, 1.5, Qt::darkGray));
+    farSatellite->addChild(new FlatOrbit(farSatellite, 3, 0.55, _shapeFactory, 0.8, Qt::lightGray));
 
     _sun->addChild(new FlatOrbit(_sun, 199, 1.5, _shapeFactory, 2, Qt::white));
 }
