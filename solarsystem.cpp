@@ -12,9 +12,10 @@ SolarSystem::SolarSystem(QWidget *parent, IShapeFactory *shapeFactory) : QGLView
     IOrbit *nearSatellite = redPlanet->addChild(new FlatOrbit(redPlanet, 5, 1.5, _shapeFactory, 1, Qt::darkBlue));
     nearSatellite->addChild(new FlatOrbit(nearSatellite, 2.2, 1, _shapeFactory, 0.5, Qt::white));
 
-    IOrbit *greenPlanet = _sun->addChild(new FlatOrbit(_sun, 89, 3, _shapeFactory, 8, Qt::green));
+    IOrbit *greenPlanet = _sun->addChild(new FlatOrbit(_sun, 89, 1.85, _shapeFactory, 8, Qt::green));
     greenPlanet->addChild(new FlatOrbit(greenPlanet, 12, 1, _shapeFactory, 1.5, Qt::white));
-    greenPlanet->addChild(new FlatOrbit(greenPlanet, 17, 0.3, _shapeFactory, 2, Qt::darkYellow));
+    IOrbit *twoStatelete = greenPlanet->addChild(new FlatOrbit(greenPlanet, 17, 0.3, _shapeFactory, 2, Qt::darkYellow));
+    twoStatelete->addChild(new FlatOrbit(twoStatelete, 2.5, 0.34, _shapeFactory, 0.6, Qt::darkCyan));
     greenPlanet->addChild(new FlatOrbit(greenPlanet, 22, 1.3, _shapeFactory, 1, Qt::white));
 
     IOrbit *darkPlanet = _sun->addChild(new FlatOrbit(_sun, 144, 0.5, _shapeFactory, 5, Qt::darkMagenta));

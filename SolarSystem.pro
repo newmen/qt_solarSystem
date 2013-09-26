@@ -1,6 +1,6 @@
 QT += core gui opengl xml
 
-LIBS += -lQGLViewer
+LIBS += -lQGLViewer -lGLU
 
 SOURCES += \
     main.cpp \

@@ -3,6 +3,7 @@
 
 FlatOrbit::FlatOrbit(const IOrbit *parent, float orbitRaduis, float rate,
                      const IShapeFactory *shapeFactory, float shapeRadius, const QColor &shapeColor) :
+    // может быть вместо parent стоит использовать this
     Orbit(parent, orbitRaduis, shapeFactory, shapeRadius, shapeColor), _angle(2 * asin(rate * 0.5 / radius())) {}
 
 float3 FlatOrbit::center() const {
